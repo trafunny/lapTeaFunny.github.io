@@ -58,9 +58,9 @@
         </div>
       </div>
       
-    <script src="./assets/active.js"></script>
+    <!-- <script src="./assets/active.js"></script> -->
 
-    <!-- <script>
+    <script>
       // 1. render song
       // 2. Scroll top 
       // 3. Play/ pause / seek 
@@ -75,10 +75,17 @@
 
         const $ = document.querySelector.bind(document)
         const $$ = document.querySelectorAll.bind(document)
+        const heading = $('header h2')
+        const cdThumb = $('.cd .cd-thumb')
+        const audio = $('#audio')
+        const player = $('.player') 
+        const pauseBtn = $('.btn-toggle-play')
+         
 
 
         const app = {
-            
+            currentIndex : 0,
+             
             songs : [
                 {
                 name: "Click Pow Get Down",
@@ -157,7 +164,7 @@
             handleEvents : function(){
               const cd = $('.cd')
               const cdWidth = cd.offsetWidth
-
+              //Xử lí phóng to thu nhỏ 
               document.onscroll = function(){
                 const scrollTop = window.scrollY || document.documentElement.scrollTop
                 const newCdWidth = cdWidth - scrollTop
@@ -166,6 +173,21 @@
                 cd.style.opacity = newCdWidth/cdWidth 
 
               }
+
+              //Xử lí nút Pause
+              pauseBtn.onclick = function(){
+                if(!player.classList.contains('playing')){
+                    audio.play()
+                    player.classList.add('playing')
+                }else{
+                  audio.pause()
+                  player.classList.remove('playing')
+                }
+              }
+
+              
+
+
               
 
             },
@@ -176,32 +198,23 @@
                   return this.songs[this.currentIndex]
                 }
 
-              })
-              
+              })   
 
             },
-
-            // getCurrentSong : function(){
-            //   console.log(this.songs[this.currentIndex])
-            // },
-
+             
             loadCurentSong : function(){
-              const heading = $('.header h2')
-              const cdThumb = $('.cd .cd-thumb')
-              const audio = $('#audio')
+             
 
-              // heading.textContent = this.currentSong.name
-              // cdThumb.style.backgroundImage = `url('${this.currentSong.image}')`
-              // audio.src = this.currentSong.path
+              heading.textContent = this.currentSong.name
+              cdThumb.style.backgroundImage = `url('${this.currentSong.image}')`
+              audio.src = this.currentSong.path
             },
 
             start : function(){
-              this.render()
-              this.loadCurentSong()
-              
               this.defineProperties()
-              
               this.handleEvents()
+              this.loadCurentSong()
+              this.render()
               
 
 
@@ -211,6 +224,6 @@
         app.start()
 
 
-    </script> -->
+    </script>
 </body>
 </html> 
