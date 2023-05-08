@@ -5,7 +5,7 @@ const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 
 const PlAYER_STORAGE_KEY = "F8_PLAYER";
-
+// THIS IS VER2
 const player = $(".player");
 const cd = $(".cd");
 const heading = $("header h2");
