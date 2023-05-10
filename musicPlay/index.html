@@ -98,9 +98,9 @@
              
             songs : [
                 {
-                name: "Click Pow Get Down",
+                name: "That time how do you feel",
                 singer: "Raftaar x Fortnite",
-                path: "https://mp3.filmisongs.com/go.php?id=Damn%20Song%20Raftaar%20Ft%20KrSNa.mp3",
+                path: "https://nhacchuong.net/wp-admin/audio-user/112633923529509251502/cam-giac-luc-ay-se-ra-sao-lou-hoang.mp3",
                 image: "https://i.ytimg.com/vi/jTLhQf5KJSc/maxresdefault.jpg"
                 },
                 {
@@ -145,6 +145,13 @@
                 path: "./assets/mp3/Nhac-Chuong-Chay-Ve-Noi-Phia-Anh-Khac-Viet.mp3",
                 image:
                     "https://a10.gaanacdn.com/gn_img/albums/YoEWlabzXB/oEWlj5gYKz/size_xxl_1586752323.webp"
+                },
+                {
+                name: "That Time How Do You Feel",
+                singer: "Raftaar x Harjas",
+                path: "https://nhacchuong.net/wp-admin/audio-user/112633923529509251502/cam-giac-luc-ay-se-ra-sao-lou-hoang.mp3",
+                image:
+                    "https://hips.hearstapps.com/hmg-prod/images/golden-retriever-royalty-free-image-506756303-1560962726.jpg?crop=1.00xw:0.756xh;0,0.0756xh&resize=1200:*"
                 },
                
             ],
@@ -314,8 +321,13 @@
                   return this.songs[this.currentIndex]
                 }
 
-              })   
-
+              })
+            //   const a  = [... new Set($$('div.option .fa'))]
+            //  a.forEach((e,i)=>{
+            //   e.onclick = function(){
+            //     e.stopPropagation()
+            //   }
+            //  })
             },
              
             loadCurentSong : function(){
@@ -338,9 +350,11 @@
               app.isActiveSong = !app.isActiveSong
 
             },
-
+            // play when click playlist
             playClickedSong : function(){
               const songs = $$('.song')
+              const optionBtn  = [... new Set($$('div.option '))]
+
               let arrSongs = [...new Set(songs)]
               
               arrSongs.forEach((element,index) => {
@@ -354,9 +368,14 @@
                     pauseBtn.click()
                   }
                  
-                }
-                
+                }        
               });
+              //No active when click otionBtn 
+              optionBtn.forEach((e,i)=>{
+                e.onclick = function(event){
+                  event.stopPropagation()
+                }
+              })
             },
 
             scrollToActiveSong: function(){
