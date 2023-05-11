@@ -358,7 +358,7 @@
               let arrSongs = [...new Set(songs)]
               
               arrSongs.forEach((element,index) => {
-                element.onclick = function(){
+                element.onclick = function(event){                  
                   app.activeSong()
                   app.currentIndex = index
                   app.loadCurentSong()
@@ -367,13 +367,21 @@
                   }else{
                     pauseBtn.click()
                   }
-                 
+                  // if(e.target.start)
+                  
                 }        
               });
               //No active when click otionBtn 
               optionBtn.forEach((e,i)=>{
                 e.onclick = function(event){
                   event.stopPropagation()
+                  arrSongs.forEach((song)=>{
+                    song.style.opacity = '1' 
+
+                  })
+                  
+                  
+                  
                 }
               })
             },

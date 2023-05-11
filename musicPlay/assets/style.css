@@ -151,7 +151,9 @@
   .song:active {
     opacity: 0.8;
   }
-  
+  div.option .fa:active{
+    
+  }
   .song.active .option,
   .song.active .author,
   .song.active .title {
